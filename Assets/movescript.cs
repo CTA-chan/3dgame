@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movescript : MonoBehaviour
 {
-    
+
     float speed = 20.0f;
     public Rigidbody rb;
     private Vector3 latestPos;
@@ -12,6 +12,7 @@ public class movescript : MonoBehaviour
     bool jump;
     //wall
     bool wall;
+    bool climbwall;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,13 +22,12 @@ public class movescript : MonoBehaviour
     void Update () {
         float x =  Input.GetAxis("Horizontal") * speed;
         float z = Input.GetAxis("Vertical") * speed;
-        Vector3 move = new Vector3(x,0,z); 
-        if(wall == false){
+        Vector3 move = new Vector3(x,0,z);
+        if(climbwall == false){
             if(rb.velocity.magnitude < 5){
                 rb.AddForce(move, ForceMode.Force);
             }
-
-            Vector3 diff = transform.position - latestPos;    
+            Vector3 diff = transform.position - latestPos;
             latestPos = transform.position;
             if(Mathf.Abs(diff.x) > 0.001f || Mathf.Abs(diff.z) > 0.001f){
                 Quaternion rot = Quaternion.LookRotation(diff);
@@ -36,6 +36,10 @@ public class movescript : MonoBehaviour
                 rot.x = 0f;
                 this.transform.rotation = rot;
             }
+        }
+        if(climbwall == true || Input.GetKey(KeyCode.S)){
+          climbwall = false;
+          rb.AddForce(0f,0f,20f);
         }
         if(jump == true){
             if(Input.GetKeyDown(KeyCode.Space)){
@@ -48,6 +52,12 @@ public class movescript : MonoBehaviour
         if (Physics.Raycast(ray,out hit,1.0f)){
             if(hit.collider.gameObject.tag == "wall"){
                 wall = true;
+            }
+        }
+        if(wall == true){
+            if(Input.GetKey(KeyCode.Z)){
+            climbwall = true;
+            Debug.Log("AA");
             }
         }
     }
