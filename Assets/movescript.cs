@@ -9,10 +9,11 @@ public class movescript : MonoBehaviour
     public Rigidbody rb;
     private Vector3 latestPos;
     public GameObject Character;
-    GameObject t;
     Vector3 pos;
+    Vector3 posjump;
     //jumps
-    bool jump;
+    bool jump = false;
+    GameObject JumpGround;
     //wall
     bool wall;
     bool climbwall;
@@ -23,7 +24,7 @@ public class movescript : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-        //Debug.Log(climbwall);
+
         //移動
         float x =  Input.GetAxis("Horizontal") * speed;
         float z = Input.GetAxis("Vertical") * speed;
@@ -48,6 +49,7 @@ public class movescript : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.Space)){
                     jump = false;
                     rb.AddForce(transform.up * 200);
+                    Debug.Log(jump);
                 }
             }
           /*squat
@@ -70,13 +72,13 @@ public class movescript : MonoBehaviour
               rb.velocity = Vector3.zero;
               transform.Translate(0f,0.1f,0.02f);
         }
+        //wall
         pos = transform.position;
         pos.y -= 0.6f;
-        RaycastHit hit;
-        Ray ray = new Ray(pos, transform.forward);
-        if (Physics.Raycast(ray,out hit,0.5f)){
-            GameObject t = hit.collider.gameObject;
-            if(hit.collider.gameObject.tag == "wall"){
+        RaycastHit wallhit;
+        Ray wallray = new Ray(pos, transform.forward);
+        if (Physics.Raycast(wallray,out wallhit,0.5f)){
+            if(wallhit.collider.gameObject.tag == "wall"){
                 wall = true;
             }
         }else{
@@ -90,14 +92,31 @@ public class movescript : MonoBehaviour
         }else if(wall == false){
             climbwall = false;
         }
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.red, 5);
+        Debug.DrawRay(wallray.origin, wallray.direction * 0.5f, Color.red, 5);
+        //jump_sensor
+        RaycastHit jumphit;
+        var under = -transform.up;
+        posjump = transform.position;
+        posjump.y -= 1f;
+        Ray jumpray = new Ray(posjump, under);
+        if (Physics.Raycast(jumpray,out jumphit,0.1f)){
+            JumpGround = jumphit.collider.gameObject;
+            if(jumphit.collider.gameObject.tag == "Ground"){
+              if(jump == true){
+                Debug.Log("AA");
+              }else if(jump == false){
+                jump = true;
+              }
+            }
+        }
+        Debug.DrawRay(jumpray.origin, jumpray.direction * 0.1f, Color.red, 1);
     }
 
-    void OnCollisionEnter(Collision other){
+    /*void OnCollisionEnter(Collision other){
             if (other.gameObject.tag == "Ground"){
                 jump = true;
             }else{
                 jump = false;
             }
-    }
+    }*/
 }
