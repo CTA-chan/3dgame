@@ -7,7 +7,7 @@ public class attackscript : MonoBehaviour
     GameObject　enemy;
     HitPointscript script;
     int attackpoint = 10;
-    float attacktime;
+    float attacktime = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +18,14 @@ public class attackscript : MonoBehaviour
     void Update()
     {
       if(enemy != null){
-        if(attacktime == 0f){
+        if(attacktime <= 0f){
           if(Input.GetMouseButtonDown(0)){
               int hp = script.HP;
               hp -= attackpoint;
               script.HP = hp;
               Debug.Log(hp);
               attacktime = 1f;
+              Invoke("AttackTimeManager",0.5f);
           }
         }
       }
@@ -37,8 +38,6 @@ public class attackscript : MonoBehaviour
         }
      }
      void AttackTimeManager(){
-        if(attacktime <= 0f){
-            attacktime -= Time.deltaTime;
-        }
+        attacktime = 0f;
      }
 }
