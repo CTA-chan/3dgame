@@ -46,11 +46,8 @@ public class movescript : MonoBehaviour
             }
           //jump
             if(jump == true){
-                if(Input.GetKeyDown(KeyCode.Space)){
-                    jump = false;
-                    rb.AddForce(transform.up * 200);
-                    Debug.Log(jump);
-                }
+                JumpManager();
+                jump = false;
             }
           /*squat
             if(Input.GetKeyDown(KeyCode.LeftShift)){
@@ -75,8 +72,9 @@ public class movescript : MonoBehaviour
         //wall
         pos = transform.position;
         pos.y -= 0.6f;
+        var CF = Character.transform.forward;
         RaycastHit wallhit;
-        Ray wallray = new Ray(pos, transform.forward);
+        Ray wallray = new Ray(pos, CF);
         if (Physics.Raycast(wallray,out wallhit,0.5f)){
             if(wallhit.collider.gameObject.tag == "wall"){
                 wall = true;
@@ -88,30 +86,36 @@ public class movescript : MonoBehaviour
             if(Input.GetKey(KeyCode.W)){
             climbwall = true;
             //Debug.Log("AA");
+          }if(wall == false){
+              climbwall = false;
           }
         }else if(wall == false){
             climbwall = false;
         }
-        Debug.DrawRay(wallray.origin, wallray.direction * 0.5f, Color.red, 5);
         //jump_sensor
         RaycastHit jumphit;
-        var under = -transform.up;
+        var CU = -Character.transform.up;
         posjump = transform.position;
         posjump.y -= 1f;
-        Ray jumpray = new Ray(posjump, under);
+        Ray jumpray = new Ray(posjump, CU);
         if (Physics.Raycast(jumpray,out jumphit,0.1f)){
             JumpGround = jumphit.collider.gameObject;
             if(jumphit.collider.gameObject.tag == "Ground"){
-              if(jump == true){
-                Debug.Log("AA");
-              }else if(jump == false){
+              if(jump == false){
                 jump = true;
               }
             }
         }
-        Debug.DrawRay(jumpray.origin, jumpray.direction * 0.1f, Color.red, 1);
+         Debug.DrawRay(wallray.origin, wallray.direction * 0.5f, Color.red, 0.5f);
     }
 
+    void JumpManager(){
+      if(Input.GetKeyDown(KeyCode.Space)){
+          jump = false;
+          rb.AddForce(transform.up * 200);
+          Debug.Log(jump);
+      }
+    }
     /*void OnCollisionEnter(Collision other){
             if (other.gameObject.tag == "Ground"){
                 jump = true;
