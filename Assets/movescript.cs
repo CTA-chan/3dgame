@@ -100,20 +100,22 @@ public class movescript : MonoBehaviour
         Ray jumpray = new Ray(posjump, CU);
         if (Physics.Raycast(jumpray,out jumphit,0.1f)){
             JumpGround = jumphit.collider.gameObject;
+              Debug.Log("床だぜぇ");
             if(jumphit.collider.gameObject.tag == "Ground"){
+              //Debug.Log("床だぜぇ");
               if(jump == false){
                 jump = true;
               }
             }
         }
          Debug.DrawRay(wallray.origin, wallray.direction * 0.5f, Color.red, 0.5f);
+         Debug.DrawRay(jumpray.origin, jumpray.direction * 0.1f, Color.red, 0.5f);
     }
 
     void JumpManager(){
       if(Input.GetKeyDown(KeyCode.Space)){
           jump = false;
           rb.AddForce(transform.up * 200);
-          Debug.Log(jump);
       }
     }
     /*void OnCollisionEnter(Collision other){
