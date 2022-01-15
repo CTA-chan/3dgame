@@ -346,7 +346,11 @@ GameObject:
   - component: {fileID: 906435401}
   - component: {fileID: 906435400}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: stageyeah
+=======
+  m_Name: stage
+>>>>>>> 54a9fe23a2eacf6570066d555dca157163afbab5
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
