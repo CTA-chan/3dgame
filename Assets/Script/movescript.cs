@@ -5,12 +5,14 @@ using UnityEngine;
 public class movescript : MonoBehaviour
 {
     //move
-    float speed = 20.0f;
+    float x;
+    float z;
+    //float speed = 20.0f;
     public Rigidbody rb;
     private Vector3 latestPos;
     public GameObject Character;
     Vector3 pos;
-    Vector3 posjump;
+    float moveSpeed = 3f;
     //jumps
     public bool jump = false;
     GameObject JumpGround;
@@ -26,13 +28,14 @@ public class movescript : MonoBehaviour
     void Update () {
 
         //移動
-        float x =  Input.GetAxis("Horizontal") * speed;
-        float z = Input.GetAxis("Vertical") * speed;
+      x =  Input.GetAxis("Horizontal");
+      z = Input.GetAxis("Vertical");
           //move
-        if(climbwall == false){
-            Vector3 move = new Vector3(x,0,z);
+          if(climbwall == false){
+            /*Vector3 move = new Vector3(x,0,z);
             if(rb.velocity.magnitude < 5){
-                rb.AddForce(move, ForceMode.Force);
+                rb.AddForce(transform.forward * z, ForceMode.Force);
+
             }
           //direction
             Vector3 diff = transform.position - latestPos;
@@ -43,7 +46,7 @@ public class movescript : MonoBehaviour
                 rot.z = 0f;
                 rot.x = 0f;
                 Character.transform.rotation = rot;
-            }
+            }*/
           //jump
             if(jump == true){
                 JumpManager();
@@ -98,6 +101,22 @@ public class movescript : MonoBehaviour
       if(Input.GetKeyDown(KeyCode.Space)){
           jump = false;
           rb.AddForce(transform.up * 200);
+      }
+    }
+
+    void FixedUpdate() {
+      // カメラの方向から、X-Z平面の単位ベクトルを取得
+      Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+
+      // 方向キーの入力値とカメラの向きから、移動方向を決定
+      Vector3 moveForward = cameraForward * z + Camera.main.transform.right * x;
+
+      // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
+      rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
+
+      // キャラクターの向きを進行方向に
+      if (moveForward != Vector3.zero) {
+        transform.rotation = Quaternion.LookRotation(moveForward);
       }
     }
     void OnTriggerEnter(Collider other){

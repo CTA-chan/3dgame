@@ -20,7 +20,6 @@ public class jumpscript : MonoBehaviour
     void OnTriggerEnter(Collider other){
             if (other.gameObject.tag == "Ground"){
                 JumpBool = true;
-                Debug.Log(JumpBool);
                 script.jump = JumpBool;
             }
     }
