@@ -19,6 +19,8 @@ public class movescript : MonoBehaviour
     //wall
     bool wall;
     bool climbwall;
+    //animation
+    public Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,6 +32,13 @@ public class movescript : MonoBehaviour
         //移動
       x =  Input.GetAxis("Horizontal");
       z = Input.GetAxis("Vertical");
+
+        //Animator
+      if(Input.GetKeyDown(KeyCode.W)){
+          animator.SetBool("run",true);
+      }else if(Input.GetKeyUp(KeyCode.W)){
+          animator.SetBool("run",false);
+      }
           //move
           if(climbwall == false){
             /*Vector3 move = new Vector3(x,0,z);
@@ -101,6 +110,7 @@ public class movescript : MonoBehaviour
       if(Input.GetKeyDown(KeyCode.Space)){
           jump = false;
           rb.AddForce(transform.up * 200);
+          animator.SetTrigger("jump");
       }
     }
 

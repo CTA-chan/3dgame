@@ -1,0 +1,115 @@
+Using pre-set license
+
+ COMMAND LINE ARGUMENTS:
+/Applications/Unity/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/raykatano/Desktop/3d game
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50563
+Successfully changed project path to: /Users/raykatano/Desktop/3d game
+/Users/raykatano/Desktop/3d game
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 24.76 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.3f1 (8ff31bc5bf5b)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/raykatano/Desktop/3d game/Assets
+GfxDevice: creating device client; threaded=0
+2022-01-24 20:02:23.784 Unity[2561:111460] Color LCD preferred device: Intel(R) UHD Graphics 630 (low power)
+2022-01-24 20:02:23.785 Unity[2561:111460] Metal devices available: 2
+2022-01-24 20:02:23.785 Unity[2561:111460] 0: AMD Radeon Pro 560X (high power)
+2022-01-24 20:02:23.785 Unity[2561:111460] 1: Intel(R) UHD Graphics 630 (low power)
+2022-01-24 20:02:23.785 Unity[2561:111460] Using device AMD Radeon Pro 560X (high power)
+Initializing Metal device caps: AMD Radeon Pro 560X
+Initialize mono
+Mono path[0] = '/Applications/Unity/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56561
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.000542 seconds.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 24.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.841 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000397 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.23 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.055 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Applications/Unity/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0.23 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1255 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.1 MB.
+System memory in use after: 114.2 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1697.
+Total: 2.177970 ms (FindLiveObjects: 0.189121 ms CreateObjectMapping: 0.045940 ms MarkObjects: 1.844028 ms  DeleteObjects: 0.097842 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Script/movescript.cs
+  artifactKey: Guid(45e31df9588f14fb59dbfcf42ad28080) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Script/movescript.cs using Guid(45e31df9588f14fb59dbfcf42ad28080) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20bf11f9b35f84f1256a74cfe72c6ef1') in 0.467133 seconds
+  Import took 0.469308 seconds .
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 93.3 MB.
+System memory in use after: 93.4 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1697.
+Total: 1.668913 ms (FindLiveObjects: 0.163307 ms CreateObjectMapping: 0.046379 ms MarkObjects: 1.412588 ms  DeleteObjects: 0.045423 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000511 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.21 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.847 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.21 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1250 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 118.5 MB.
+System memory in use after: 118.6 MB.
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 1700.
+Total: 1.554013 ms (FindLiveObjects: 0.149731 ms CreateObjectMapping: 0.038626 ms MarkObjects: 1.310653 ms  DeleteObjects: 0.053737 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
