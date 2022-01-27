@@ -8,8 +8,8 @@ public class CameraTracking : MonoBehaviour
   Vector3 targetPos;
 
   void Start () {
-      targetObj = GameObject.Find("Player");
-      targetPos = targetObj.transform.position;
+    targetObj = GameObject.FindWithTag("player");
+    targetPos = targetObj.transform.position;
   }
 
   void Update() {
