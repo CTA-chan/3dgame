@@ -15,7 +15,6 @@ public class movescript : MonoBehaviour
     float moveSpeed = 3f;
     //jumps
     public bool jump = false;
-    GameObject JumpGround;
     //wall
     bool wall;
     bool climbwall;

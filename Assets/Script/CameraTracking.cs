@@ -6,13 +6,22 @@ public class CameraTracking : MonoBehaviour
 {
   GameObject targetObj;
   Vector3 targetPos;
+  bool first = true;
+  Vector3 aa = new Vector3(0,5,-7);
 
   void Start () {
-    targetObj = GameObject.FindWithTag("player");
-    targetPos = targetObj.transform.position;
   }
 
   void Update() {
+
+    if(first == true){
+      first = false;
+      targetObj = GameObject.FindWithTag("player");
+      targetPos = targetObj.transform.position;
+      transform.position = targetPos + aa;
+      transform.rotation = Quaternion.Euler(23,0,0);
+    }
+
       // targetの移動量分、自分（カメラ）も移動する
       transform.position += targetObj.transform.position - targetPos;
       targetPos = targetObj.transform.position;
