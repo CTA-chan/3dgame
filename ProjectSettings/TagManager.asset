@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - goal
   - player
+  - punch
   layers:
   - Default
   - TransparentFX

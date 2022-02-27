@@ -20,9 +20,12 @@ public class movescript : MonoBehaviour
     bool climbwall;
     //animation
     public Animator animator;
+    //punch
+    public Collider punch;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        punch.enabled = false;
     }
 
     // Update is called once per frame
@@ -33,9 +36,9 @@ public class movescript : MonoBehaviour
       z = Input.GetAxis("Vertical");
 
         //Animator
-      if(Input.GetKeyDown(KeyCode.W)){
+      if(x != 0 || z != 0){
           animator.SetBool("run",true);
-      }else if(Input.GetKeyUp(KeyCode.W)){
+      }else if(x == 0 || z == 0){
           animator.SetBool("run",false);
       }
           //move
@@ -103,6 +106,14 @@ public class movescript : MonoBehaviour
             climbwall = false;
         }
          Debug.DrawRay(wallray.origin, wallray.direction * 0.5f, Color.red, 0.5f);
+
+        if (Input.GetMouseButtonDown(0)){
+           animator.SetTrigger("punch");    //マウスクリックで攻撃モーション
+           punch.enabled = true;
+        }else{
+            punch.enabled = false;
+        }
+
     }
 
     void JumpManager(){
@@ -128,11 +139,11 @@ public class movescript : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(moveForward);
       }
     }
-    void OnTriggerEnter(Collider other){
+    /*void OnTriggerEnter(Collider other){
             if (other.gameObject.tag == "Ground"){
                 jump = true;
             }else{
                 jump = false;
             }
-    }
+    }*/
 }
