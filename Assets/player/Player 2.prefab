@@ -295,6 +295,7 @@ MonoBehaviour:
   Character: {fileID: 4863640989795855842}
   jump: 0
   animator: {fileID: 4863640989637729641}
+  punch: {fileID: 0}
 --- !u!1 &4863640989603594038
 GameObject:
   m_ObjectHideFlags: 0
